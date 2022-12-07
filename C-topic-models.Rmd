@@ -1,0 +1,61 @@
+---
+title: "Problem Set 4 - Part C"
+output: html_document
+---
+
+```{r, echo = FALSE}
+library("quanteda", quietly = TRUE, warn.conflicts = FALSE, verbose = FALSE)
+library("topicmodels", quietly = TRUE, warn.conflicts = FALSE, verbose = FALSE)
+```
+
+### Topic models
+
+As the lecture examples already discussed correlated and structural topic models, in this exercise, we will estimate a simple LDA model. Part of the exercise is therefore to look up some functionalities in a new package's [manual](https://cran.r-project.org/web/packages/topicmodels/topicmodels.pdf). As an exemplary dataset, we will analyse tweets by Donald Trump from January 1st 2017 to June 29th 2018. 
+
+1. Create a histogram with the number of tweets by month.
+
+```{r}
+tweets <- readr::read_csv("trump-tweets.csv", col_types="cTDc")
+```
+
+2. 
+
+Create a corpus object and a dfm using options from `quanteda` that seem appropriate to you. For simplicity in this exercise, use one tweet as one document.
+
+Estimate the LDA model. You can e.g. experiment with different numbers of topics, different pre-processing of the tweets with `quanteda`, or runs of the model with different random number seeds. Hint: When estimating the model, use the function `LDA` and make sure to set a seed in every run with the option `control = list(seed = some_run_specific_number)`. This ensures that you will find the same outcomes when you re-start the estimation of a specific run.
+
+```{r}
+
+```
+
+3. Look at the words most associated with each topic for a sample of topics. You can get the top N words of a topic with the function `terms()`. Can you put labels (on some) of the topics?
+
+```{r}
+
+```
+
+4. Use the function `topics()` to obtain the topic with the highest proportion for each of the tweets. For one topic number that you choose, sample some tweets randomly that are predicted to contain that topic in highest proportion, and show that their semantic content (largely) reflects the topic you expected.
+
+```{r}
+
+```
+
+5. For the topic you chose in the previous exercise, plot how its share has evolved over time. What do you find? Hint: Use the function `posterior` with your estimated model to obtain matrices which we discussed in the lecture that you can name "beta" and "theta". Then you can use the theta matrix to obtain the relevant topic's share in documents and match this data with the time of the documents.
+
+```{r}
+
+
+```
+
+6. For the topic you plotted over time, use your beta matrix to obtain the top 15 words. Do you find the same 15 words that you found when using the `terms()` function earlier?
+
+```{r}
+
+```
+
+7. Also with the beta matrix, compute the share of the word "trade" in each of the topics. Hint: Note that individual word probabilities are relatively small, but you can normalise them for "trade" so that they add up to one across the topics. What are the word's normalised shares across all topics? Which topic does contain the word in the highest proportion? Print the top 15 words of that topic.
+
+```{r}
+
+```
+
